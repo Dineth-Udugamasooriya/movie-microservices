@@ -1,0 +1,55 @@
+type Mutation {
+    addMovie(
+        title: String! #required fields
+        release_year: Int!
+        genre: String!
+    ): Movie
+
+    addActor(
+        first_name: String!
+        last_name: String!
+        nationality: String
+        birth_date: DateTime
+    ): Actor
+
+    updateActor(
+        actor_id: Int!
+        first_name: String
+        last_name: String
+        nationality: String
+        birth_date: DateTime
+    ): Actor
+
+    updateMovie(
+        movie_id: Int!
+        title: String
+        release_year: Int
+        genre: String
+    ): Movie
+
+    addMovieActor(
+        actor_id: Int!
+        movie_id: Int!
+    ): MovieActor
+
+    deleteActor(
+        actor_id: Int!
+    ): Actor
+
+    deleteActorJoin(
+        actor_id: Int!
+    ): MovieActor
+
+    deleteMovie(
+        movie_id: Int!
+    ): Movie
+
+    deleteMovieJoin(
+        movie_id: Int!
+    ): MovieActor
+}
+
+# To modify data in the database (server), you define mutations.
+
+# addMovie mutation is designed to add a new movie to the database.
+# If a movie is added to the database, the mutation returns a Movie object. This allows you to immediately retrieve the data you newly created.

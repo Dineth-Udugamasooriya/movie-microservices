@@ -1,0 +1,45 @@
+# describes the types of data you can query or mutate and the relationship berween them
+
+# Types represent the strucure of data that can be queried or mutated in the GraphQL API
+
+type Movie { #defines the structure of a movie object that can be queried
+    movie_id: Int
+    title: String
+    release_year: Int
+    genre: String
+    actors: [Actor]
+}
+
+type Actor { #defines the structure of an actor object that can be queried
+    actor_id: Int
+    first_name: String
+    last_name: String
+    birth_date: DateTime
+    nationality: String
+    movies: [Movie]
+}
+
+type MovieActor {
+    movie_id: Int
+    actor_id: Int
+}
+
+#Input types are used for mutations (i.e., when sending data to the server). These types define the structure of data that you can send in mutations.
+
+# input ActorInput { #used to specify when creating or updating an actor
+#     actor_id: Int
+#     first_name: String!
+#     last_name: String!
+#     birth_date: DateTime
+#     nationality: String
+# }
+
+# input MovieInput {
+#     movie_id: Int
+#     title: String! #! indicates this foeld is non-nullable => a required field
+#     release_year: Int!
+#     genre: String!
+#     actors: [ActorInput]
+# }
+
+scalar DateTime # defines a custom scalar type for representing date and time values

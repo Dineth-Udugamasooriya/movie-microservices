@@ -1,0 +1,34 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model movie {
+  movie_id Int @id @default(autoincrement()) //@id indicates that the field is a primary key, and @default(autoincrement()) specifies that the field is automatically incremented.
+  title String @db.VarChar(255)
+  release_year Int? //? indicates that the field is optional.
+  genre String? @db.VarChar(50)
+  movie_actor movie_actor[] //This field represents the many-to-many relationship between movies and actors.
+}
+
+model actor {
+  actor_id Int @id @default(autoincrement())
+  first_name String @db.VarChar(255)
+  last_name String @db.VarChar(255)
+  birth_date DateTime?
+  nationality String? @db.VarChar(50)
+  movie_actor movie_actor[] //This field represents the many-to-many relationship between actors and movies.
+}
+
+model movie_actor {
+  movie_id Int //An integer that references the movie_id in the movie table.
+  actor_id Int //An integer that references the actor_id in the actor table.
+  movie movie @relation(fields: [movie_id], references: [movie_id]) //A relation field that connects the movie_actor table to the movie table.
+  actor actor @relation(fields: [actor_id], references: [actor_id]) //A relation field that connects the movie_actor table to the actor table.
+
+  @@id([movie_id, actor_id]) //specifies a composite primary key for the movie_actor table, ensuring that each combination of movie_id and actor_id is unique.
+}

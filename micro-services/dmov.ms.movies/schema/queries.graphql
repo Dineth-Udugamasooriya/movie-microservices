@@ -1,0 +1,16 @@
+type Query {
+    movies: [Movie] 
+    movie(movie_id: Int!): Movie
+    actors: [Actor]
+    actor(actor_id: Int!): Actor
+    movieActors(movie_id: Int!): [MovieActor]
+}
+
+# To fetch data from the database (server), you define queries.
+
+# movie: [Movie] returns an array of Movie objects
+# Each element in the array is of type Movie, which is defined in the typedefs.graphql file
+# This query doesn't require any input arguments.
+
+# movie(movie_id: Int!): Movie returns a single Movie object
+# (Int!) => The movie_id argument is required and must be of type Int
