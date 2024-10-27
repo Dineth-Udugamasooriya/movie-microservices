@@ -1,0 +1,31 @@
+.header {
+  grid-column: 1 / -1;
+  background-color: #13597b;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  height: 25px;
+}
+
+.header h2 {
+  margin: 0;
+  
+}
+
+#loginBtn {
+  background-color: #444;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-left: 1000px;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+
+}
+
+.header button:hover {
+  background-color: #555;
+}
